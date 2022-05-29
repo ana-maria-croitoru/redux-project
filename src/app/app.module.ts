@@ -9,6 +9,9 @@ import { GalleryService } from './gallery/gallery.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleryComponent } from './gallery/gallery.component';
 import { FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { GalleryEffect } from './gallery/gallery.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent, GalleryComponent],
@@ -18,6 +21,11 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({ gallery: galleryReducer }),
+    EffectsModule.forRoot([GalleryEffect]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent],

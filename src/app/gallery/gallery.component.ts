@@ -24,12 +24,13 @@ export class GalleryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.galleryService.loadGallery().subscribe((gallery) => {
-      console.log(gallery);
-      this.store.dispatch(
-        retrievedGalleryList({ allGallery: gallery as GalleryModel[] })
-      );
-    });
+    this.store.dispatch(retrievedGalleryList());
+    // this.galleryService.loadGallery().subscribe((gallery) => {
+    //   console.log(gallery);
+    //   this.store.dispatch(
+    //     retrievedGalleryList({ allGallery: gallery as GalleryModel[] })
+    //   );
+    // });
   }
   albumChange(event: string) {
     this.allGallery$ = this.store.pipe(

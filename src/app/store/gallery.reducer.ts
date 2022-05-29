@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { GalleryModel } from '../gallery/gallery.model';
-import { retrievedGalleryList } from './gallery.action';
+import { retrievedGalleryListSuccess } from './gallery.action';
 
 export const initialState: ReadonlyArray<GalleryModel> = [];
 
 const _galleryReducer = createReducer(
   initialState,
-  on(retrievedGalleryList, (state, { allGallery }) => {
+  on(retrievedGalleryListSuccess, (state, { allGallery }) => {
     return [...allGallery];
   })
 );
